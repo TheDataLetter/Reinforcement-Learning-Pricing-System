@@ -1,0 +1,2 @@
+# This directory will contain trained model artifacts
+# Model files are gitignored to avoid large file commits
