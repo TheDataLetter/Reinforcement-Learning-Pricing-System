@@ -41,10 +41,10 @@ def assess_policy(
 
             # No promos if stock < 100
             if obs[0] < 100:
-                print("WARNING: Inventory below 100 but promotion is " +
-                      f"{action[1]}")
-                assert action[1] < 1e-5, (
-                    f"Promo active during stockout risk: {action[1]}")
+                print("WARNING: Inventory below 100 but promotion is " + f"{action[1]}")
+                assert (
+                    action[1] < 1e-5
+                ), f"Promo active during stockout risk: {action[1]}"
 
             obs, reward, done, _, _ = env.step(action)
             step_count += 1
@@ -71,8 +71,5 @@ if __name__ == "__main__":
 
     # You would need to train a model first
     # or provide a path to a pre-trained model
-    print("Note: Run train.py first to create a model, " +
-          "then update this path")
-    results = assess_policy(
-        "models/trained_pricing_agent", products, n_episodes=10
-    )
+    print("Note: Run train.py first to create a model, " + "then update this path")
+    results = assess_policy("models/trained_pricing_agent", products, n_episodes=10)

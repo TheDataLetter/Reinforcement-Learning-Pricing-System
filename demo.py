@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 from environment import PricingStrategySim
 
+
 def main():
     print("Reinforcement Learning Pricing Demo")
     print("=======================================")
@@ -12,13 +13,15 @@ def main():
     print()
 
     # Create sample product data (coffee product from teh article)
-    products = pd.DataFrame({
-        'base_demand': [100],       # Daily units sold at regular price
-        'price_sensitivity': [-1.8],    # How demand changes with price
-        'price': [5.99],            # Regular shelf price
-        'cost': [2.50],             # Wholesale cost
-        'initial_inventory': [1000]  # Starting inventory
-    })
+    products = pd.DataFrame(
+        {
+            "base_demand": [100],  # Daily units sold at regular price
+            "price_sensitivity": [-1.8],  # How demand changes with price
+            "price": [5.99],  # Regular shelf price
+            "cost": [2.50],  # Wholesale cost
+            "initial_inventory": [1000],  # Starting inventory
+        }
+    )
 
     # Create the pricing environment
     print("Creating pricing environment with coffee product...")
@@ -31,9 +34,11 @@ def main():
     print(f"📈 Demand factor: {obs[2]:.2f}x normal")
 
     # Test a sample action (20% discount with medium display priority)
-    action = np.array([0.8, 0.5])   # 20% off, medium display priority
+    action = np.array([0.8, 0.5])  # 20% off, medium display priority
 
-    print(f"🎯 Testing action: {action[0]:.1f} price multiplier ({ (1-action[0])*100:.0f}% discount)")
+    print(
+        f"🎯 Testing action: {action[0]:.1f} price multiplier ({ (1-action[0])*100:.0f}% discount)"
+    )
     print(f"                : {action[1]:.1f} display priority")
 
     # Take the action
@@ -48,6 +53,7 @@ def main():
     print(f"📈 New demand factor: {obs[2]:.2f}x normal")
     print()
     print("Demo completed! Run train.py to train the full model.")
+
 
 if __name__ == "__main__":
     main()
